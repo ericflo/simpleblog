@@ -1,6 +1,7 @@
-Hello,
+{% extends "base.html" %}
 
-{{ post|safe }}
+{% block title %}{{ metadata.title }} - Eric Florenzano&rsquo;s Blog{% endblock %}
 
-Thanks,
-Eric
+{% block container %}
+  {{ post|safe }}
+{% endblock %}

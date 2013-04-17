@@ -42,6 +42,16 @@ def slugify(name):
     return re.sub(r'\W+', '-', name.lower())
 
 
+def metadata_to_url(metadata):
+    return '/blog/%s/%s/%s/%s/' % (
+        str(metadata['date'].year).zfill(2),
+        str(metadata['date'].month).zfill(2),
+        str(metadata['date'].day).zfill(2),
+        metadata['slug'],
+    )
+JINJA.globals['metadata_to_url'] = metadata_to_url
+
+
 def split_post_metadata(data):
     line_count = 0
     metadata_lines = []
@@ -92,6 +102,9 @@ def main():
         if not metadata.get('published', False):
             continue
 
+        slug = os.path.splitext(os.path.split(filename)[-1])[0][11:]
+        metadata['slug'] = slug
+
         print os.path.split(filename)[-1]
         everything.append({'metadata': metadata, 'rendered': rendered})
 
@@ -105,7 +118,6 @@ def main():
                 'category_slug': category_slug,
             })
 
-        slug = os.path.splitext(os.path.split(filename)[-1])[0][11:]
         url = '/blog/%s/%s/%s/%s/' % (
             str(metadata['date'].year).zfill(2),
             str(metadata['date'].month).zfill(2),
@@ -113,7 +125,7 @@ def main():
             slug,
         )
 
-        rendered_post = post_template.render(post=rendered)
+        rendered_post = post_template.render(post=rendered, metadata=metadata)
         post_filename = os.path.join(OUTPUT_DIR, url.lstrip('/'), 'index.html')
         write(post_filename, rendered_post)
 
