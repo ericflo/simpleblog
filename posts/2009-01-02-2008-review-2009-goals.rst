@@ -1,0 +1,98 @@
+---
+layout: post
+title: "2008 in Review & 2009 Goals"
+date: 2009-01-02T21:19:17-06:00
+comments: false
+categories: [Django, Goals, Review, Life, Programming]
+published: true
+alias: [/blog/post/2008-review-2009-goals]
+---
+
+Yesterday was the day of "2008 in review" posts.  I really enjoyed reading over
+what people had accomplished during the year, and what they planned on doing in
+the new year.  I hadn't planned on writing this post, but for some reason I'm
+doing it anyway.  So here goes, not much technical stuff ahead, so if personal
+stuff bores you then click away now.
+
+2008 in Review
+--------------------
+
+What a fantastic year.  What a crazy year.  I don't think there's ever been a
+year in my life so filled with change.  For starters, I...
+
+* Learned Erlang
+* Joined Twitter_ and FriendFeed_
+* Drove 3 hours to caucus in Iowa (what a strange ritual that is!)
+* Met some_ really_ cool_ people_ at `PyCon 2008`_
+* Became involved in the Pinax_ project
+* Wrote and released my first 7 open source Django applications
+* Guest hosted `a podcast`_
+* Learned how to use Git_
+* Graduated from college with bachelor's degree in Computer Science
+* Accepted a job offer with `Mochi Media`_
+* Moved to San Francisco
+* Released a series of `14 screencasts`_ building a project from the ground up
+* Wrote `one blog post every day`_ in the month of November
+* Quit drinking soda
+* Participated in the most notable election of my lifetime
+* Started a `Django San Francisco local user group`_
+
+...but those are just the highlights.  It's been really interesting
+transitioning from college student to the real world.  Somehow I thought that
+not having homework would mean that I would have more free time to do other
+things, but it turns out that you actually have less time if you have a job to
+go to every day.
+
+But I don't think that being a student ever stopped.  I've learned so much from
+my coworkers: different ways of thinking about problems, theoretical problems,
+real world challenges, prioritizing work, RESTful principles of the web, and
+a whole lot about databases.  This is what I like about this industry.  However
+much you know, there's more to learn, and people are generally willing to share
+their expertise with you.
+
+I've learned a lot about what it means to be part of a community; part of a
+company.  I've learned a lot about life, this year.
+
+But the learning's not over.
+
+Goals for 2009
+--------------------
+
+While I'm weary of posting my goals for all the world to see, I think it's
+important to codify them and make them public.  That way, maybe it'll compel me
+to actually follow through on these goals.  I've tried to keep them realistic
+and with a few exceptions, specific enough to be testable.  Without further ado,
+here are my goals for 2009 (in no particular order):
+
+* Learn a concatenative/stack-based language
+* Meet new people, especially those that I wouldn't normally meet
+* Write a virtual machine
+* Double both my blog and Twitter followership
+* Be more consistent in my contributions to the Pinax project, instead of helping in fits and spurts like I currently am
+* Post at least twice a month to this blog
+* Release some non-open source software, and maybe even charge for it
+* Work out an average of 2 times a week or more over the whole year
+* Learn Processing_
+* Learn about investments, and invest 10% of my earnings each month
+* Give a talk at a conference
+
+I think that all of these goals are achievable.  In fact, I'd like to do more
+than just what I listed here, but these are the ones I'm willing to commit to.
+Frankly, I can't wait to see how this year shapes up.  If it turns out to be
+anything like last year, I'm in for quite a ride.
+
+.. _Twitter: http://twitter.com/ericflo
+.. _FriendFeed: http://friendfeed.com/ericflo
+.. _some: http://lazypython.blogspot.com/
+.. _really: http://oebfare.com/
+.. _cool: http://blog.michaeltrier.com/
+.. _people: http://jtauber.com/
+.. _`PyCon 2008`: http://us.pycon.org/2008/about/
+.. _Pinax: http://pinaxproject.com/
+.. _`a podcast`: http://thisweekindjango.com/
+.. _Git: http://git.or.cz/
+.. _`Mochi Media`: http://www.mochimedia.com/
+.. _`14 screencasts`: http://thisweekindjango.com/screencasts/
+.. _`one blog post every day`: http://www.eflorenzano.com/blog/archive/2008/11/
+.. _`Django San Francisco local user group`: http://www.meetup.com/The-San-Francisco-Django-Meetup-Group/
+.. _Processing: http://processing.org/

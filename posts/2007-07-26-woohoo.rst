@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Woohoo!"
+date: 2007-07-26T10:44:43-05:00
+comments: false
+categories: [Design, Joy]
+published: true
+alias: [/blog/post/woohoo]
+---
+
+I just found a designer!  And it's one of those guys that is way too high-profile for my budget, but he's interested in my idea!
+
+WOOHOO!

@@ -1,0 +1,31 @@
+---
+layout: post
+title: "Book Meme"
+date: 2008-11-12T23:19:41-06:00
+comments: false
+categories: [Django, Meme, Programming]
+published: true
+alias: [/blog/post/book-meme]
+---
+
+"Another feature that's easy to add is a per-entry way to allow or disallow comments."
+From *Practical Django Projects* by `James Bennett`_.
+
+Meme from `James Tauber`_, `Greg Newman`_, `Justin Lilly`_ and `Brian Rosner`_.
+
+ * Grab the nearest book.
+ * Open it to page 56.
+ * Find the fifth sentence.
+ * Post the text of the sentence in your journal along with these instructions.
+ * Don't dig for your favorite book, the cool book, or the intellectual one: pick the CLOSEST.
+
+The MOST ironic part about this all, is that I was not going to do this meme tonight, and instead write a post.  However, I was so busy trying to beat James Bennett's score on level 3 of `this challenge`_, that I ran out of time for tonight.
+
+P.S. I dare you to beat my now 357,500 points on level 3 of the game in that link.  I bet you can't.
+
+.. _`James Bennett`: http://www.b-list.org/
+.. _`James Tauber`: http://jtauber.com/blog/2008/11/12/book_meme/
+.. _`Greg Newman`: http://www.20seven.org/journal/2008/11/book-meme.html
+.. _`Justin Lilly`: http://justinlilly.com/blog/2008/nov/12/book-memery/
+.. _`Brian Rosner`: http://oebfare.com/blog/2008/nov/12/book-memery/
+.. _`this challenge`: http://www.mochiads.com/challenge/accept/68dbee0cb670b06e8d0ced46fd616c87

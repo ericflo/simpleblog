@@ -1,0 +1,5 @@
+Jinja2==2.6
+docutils==0.10
+Pygments==1.5
+PyYAML==3.10
+python-dateutil==1.5

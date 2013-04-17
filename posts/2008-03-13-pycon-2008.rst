@@ -1,0 +1,15 @@
+---
+layout: post
+title: "PyCon 2008"
+date: 2008-03-13T20:04:47-05:00
+comments: false
+categories: [Django, PyCon, Python]
+published: true
+alias: [/blog/post/pycon-2008]
+---
+
+I'm currently on my way to Chicago for PyCon 2008!  I've miraculously convinced two of my good friends, Tony Hauber and Chris Coudron to come along as well.  They're even going to participate in the sprints.
+
+Last year I was still 20 years old and therefore couldn't participate in any of the drinking activities, but this year it's a different story.  It's going to be really fun to see that side of the conference this year.
+
+Come talk to me about...well..anything, really.  Pretty much any Django-related activity is a good bet on where to find me, otherwise hit up Twitter/Pownce, as I'll attempt to use those services to their fullest.  Have a wonderful PyCon and I hope to see and talk to a lot of you there!

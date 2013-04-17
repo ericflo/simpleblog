@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Picky"
+date: 2007-09-13T21:36:02-05:00
+comments: false
+categories: [Eflorenzano.com]
+published: true
+alias: [/blog/post/picky]
+---
+
+I'm picky.  And I'm sick of this blog's design.  I'm going to redesign it again, and get rid of runs and scratchpad, since I don't use them any more.
