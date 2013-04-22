@@ -8,7 +8,7 @@
     <author>
         <name><![CDATA[Eric Florenzano]]></name>
     </author>
-    <generator uri="https://github.com/ericflo/ericflo.github.com">ericflo.github.com</generator>
+    <generator uri="https://github.com/ericflo/simpleblog">simpleblog</generator>
     {% for post in posts %}
     <entry>
         <title type="html"><![CDATA[{{ post['metadata']['title'] }}]]></title>
