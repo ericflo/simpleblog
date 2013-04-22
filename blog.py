@@ -1,4 +1,6 @@
 import collections
+import datetime
+import itertools
 import os
 import re
 import shutil
@@ -40,6 +42,7 @@ def write(filename, data):
 
 def slugify(name):
     return re.sub(r'\W+', '-', name.lower())
+JINJA.globals['slugify'] = slugify
 
 
 def metadata_to_url(metadata):
@@ -66,10 +69,26 @@ def split_post_metadata(data):
     return '\n'.join(metadata_lines[1:-1]), '\n'.join(rst_lines)
 
 
-def parse_post(data):
+def annotate_metadata(filename, metadata):
+    slug = os.path.splitext(os.path.split(filename)[-1])[0][11:]
+    metadata['slug'] = slug
+    metadata['url'] = '/blog/%s/%s/%s/%s/' % (
+        str(metadata['date'].year).zfill(2),
+        str(metadata['date'].month).zfill(2),
+        str(metadata['date'].day).zfill(2),
+        slug,
+    )
+
+
+def parse_post(filename, data):
     raw_metadata, rst = split_post_metadata(data)
     metadata = yaml.load(raw_metadata)
-    rst_rendered = publish_parts(rst, writer_name='html')['html_body']
+    annotate_metadata(filename, metadata)
+    rst_rendered = publish_parts(
+        rst,
+        writer_name='html',
+        settings_overrides={'syntax_highlight': 'short'},
+    )['html_body'].replace('<h1>', '<h4>').replace('</h1>', '</h4>')
     template = JINJA.get_template('item.html')
     rendered = template.render(metadata=metadata, rst_rendered=rst_rendered)
     return metadata, rendered
@@ -81,8 +100,16 @@ def posts():
             continue
         filename = os.path.join(POSTS_DIR, filename)
         with open(filename, 'r') as f:
-            metadata, rendered = parse_post(f.read().strip())
-            yield filename, metadata, rendered
+            metadata, rendered = parse_post(filename, f.read().strip())
+            yield metadata, rendered
+
+
+def group_by_year(posts):
+    key_func = lambda p: p['metadata']['date'].year
+    grouped = []
+    for year, group in itertools.groupby(posts, key_func):
+        grouped.append((year, list(group)))
+    return grouped
 
 
 def main():
@@ -93,20 +120,18 @@ def main():
     archive_template = JINJA.get_template('archive.html')
     post_template = JINJA.get_template('post.html')
     index_template = JINJA.get_template('index.html')
+    atom_template = JINJA.get_template('atom.xml')
 
     shutil.rmtree(OUTPUT_DIR, ignore_errors=True)
     makedirs(OUTPUT_DIR)
     shutil.copytree(STATIC_DIR, OUTPUT_STATIC_DIR)
 
-    for filename, metadata, rendered in posts():
+    for metadata, rendered in posts():
         if not metadata.get('published', False):
             continue
 
-        slug = os.path.splitext(os.path.split(filename)[-1])[0][11:]
-        metadata['slug'] = slug
-
-        print os.path.split(filename)[-1]
-        everything.append({'metadata': metadata, 'rendered': rendered})
+        print 'Rendering %s' % (metadata['slug'],)
+        everything.insert(0, {'metadata': metadata, 'rendered': rendered})
 
         category_list = metadata.get('categories', []) or []
         for category in category_list:
@@ -118,18 +143,15 @@ def main():
                 'category_slug': category_slug,
             })
 
-        url = '/blog/%s/%s/%s/%s/' % (
-            str(metadata['date'].year).zfill(2),
-            str(metadata['date'].month).zfill(2),
-            str(metadata['date'].day).zfill(2),
-            slug,
-        )
-
         rendered_post = post_template.render(post=rendered, metadata=metadata)
-        post_filename = os.path.join(OUTPUT_DIR, url.lstrip('/'), 'index.html')
+        post_filename = os.path.join(
+            OUTPUT_DIR,
+            metadata['url'].lstrip('/'),
+            'index.html',
+        )
         write(post_filename, rendered_post)
 
-        rendered_redirect = redirect_template.render(url=url)
+        rendered_redirect = redirect_template.render(url=metadata['url'])
         for alias in metadata.get('alias', []):
             alias = alias.lstrip('/')
             redirect_filename = os.path.join(OUTPUT_DIR, alias, 'index.html')
@@ -137,21 +159,30 @@ def main():
 
     rendered_archive = archive_template.render(
         title='Blog Archive',
-        posts=everything,
+        posts=group_by_year(everything),
+        archives=True,
     )
     archive_filename = os.path.join(OUTPUT_DIR, 'blog/archives/index.html')
     write(archive_filename, rendered_archive)
 
-    rendered_index = index_template.render(posts=everything)
+    rendered_index = index_template.render(posts=everything, home=True)
     write(os.path.join(OUTPUT_DIR, 'index.html'), rendered_index)
+
+    rendered_atom = atom_template.render(
+        posts=everything,
+        now=datetime.datetime.utcnow(),
+    )
+    write(os.path.join(OUTPUT_DIR, 'atom.xml'), rendered_atom)
 
     for category_slug, category_posts in categories.iteritems():
         rendered_category = archive_template.render(
             title='Category: %s' % (category_posts[0]['category'],),
-            posts=category_posts,
+            posts=group_by_year(category_posts),
+            archives=False,
         )
         category_filename = os.path.join(
             OUTPUT_DIR,
+            'blog',
             'categories',
             category_slug,
             'index.html',

@@ -3,5 +3,10 @@
 {% block title %}{{ metadata.title }} - Eric Florenzano&rsquo;s Blog{% endblock %}
 
 {% block container %}
-  {{ post|safe }}
+  <div class="blog-post-detail">
+    {{ post|safe }}
+  </div>
+  <hr />
+  <br />
+  <br />
 {% endblock %}

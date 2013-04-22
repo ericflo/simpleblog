@@ -1,1 +1,13 @@
+<h3><a href="{{ metadata['url'] }}">{{ metadata['title'] }}</a></h3>
+<p class="datetime">{{ metadata['date'].strftime('%b %d, %Y') }}</p>
 {{ rst_rendered|safe }}
+{% if metadata.get('categories') -%}
+  <div class="categories">
+    Posted in:
+    <ul>
+      {% for category in metadata['categories'] %}
+        <li><a href="/blog/categories/{{ slugify(category) }}/">{{ category }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+{%- endif %}

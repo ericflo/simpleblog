@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title><![CDATA[Eric Florenzano's Blog]]></title>
+    <link href="http://eflorenzano.com/atom.xml" rel="self"/>
+    <link href="http://eflorenzano.com/"/>
+    <updated>{{ now.isoformat() }}</updated>
+    <id>http://eflorenzano.com/</id>
+    <author>
+        <name><![CDATA[Eric Florenzano]]></name>
+    </author>
+    <generator uri="https://github.com/ericflo/ericflo.github.com">ericflo.github.com</generator>
+    {% for post in posts %}
+    <entry>
+        <title type="html"><![CDATA[{{ post['metadata']['title'] }}]]></title>
+        <link href="http://eflorenzano.com{{ post['metadata']['url'] }}"/>
+        <updated>{{ post['metadata']['date'].isoformat() }}</updated>
+        <id>http://eflorenzano.com{{ post['metadata']['url'] }}</id>
+        <content type="html"><![CDATA[{{ post['rendered']|safe }}]]></content>
+    </entry>
+    {% endfor %}
+</feed>

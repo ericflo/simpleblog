@@ -1,0 +1,39 @@
+.center-column {width: 620px; margin: 0 auto;}
+
+.blog-header a {color: #333; text-decoration: none;}
+.blog-header-links {margin: 0;}
+.blog-header-links li {display: inline; padding: 0 16px 0 0;}
+.blog-header-links li.feed a {position: relative; bottom: 2px;}
+.blog-header-links iframe {position: relative; top: 4px;}
+
+.blog-post-detail > h3 a {text-decoration: none; color: #333; cursor: default;}
+
+.archive-link {text-align: center;}
+
+.categories {background-color: #eee; padding: 0.4em 1em;}
+.categories ul {display: inline; margin: 0; padding-left: 6px;}
+.categories ul li {display: inline; padding-right: 6px;}
+
+.datetime {color: #999; font-weight: bold; margin: -12px 0 12px 0;}
+
+.yeargroup {border-bottom: 1px solid #eee;}
+.yeargroup h3 {float: left; width: 80px;}
+.yearitem {float: right; width: 540px; margin: 12px 0;}
+.yearitem .date {float: left; width: 80px; margin-top: 12px; color: #999; text-align: center; font-weight: bold;}
+.itembody {float: right; width: 440px;}
+.itembody .title {font-size: 24px; font-weight: bold;}
+.itembody .categories {color: #666; padding: 0; background-color: inherit;}
+.itembody .categories ul li a {color: #999; text-decoration: underline;}
+
+.code {font-size: 14px;}
+p {margin-bottom: 16px;}
+pre {overflow: auto; word-wrap: normal; white-space: pre;}
+
+@media (max-width: 767px) {
+    .center-column {width: 100%;}
+
+    .yeargroup h3 {float: none;}
+    .yearitem {float: none;}
+    .yearitem .date {float: none;}
+    .itembody {float: none; width: auto;}
+}

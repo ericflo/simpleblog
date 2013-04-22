@@ -17,9 +17,13 @@ BLOG_FILE = os.path.join(PROJECT_DIR, 'blog.py')
 BLOG_SCRIPT = 'python %s' % (BLOG_FILE,)
 
 
+class TCPServer(SocketServer.TCPServer):
+    allow_reuse_address = True
+
+
 def main():
     os.chdir(OUTPUT_DIR)
-    httpd = SocketServer.TCPServer(
+    httpd = TCPServer(
         ('', 8000),
         SimpleHTTPServer.SimpleHTTPRequestHandler,
     )

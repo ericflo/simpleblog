@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block container %}
+{% for post in posts[:5] %}
+  {{ post['rendered']|safe }}
+  <hr />
+{% endfor %}
+<h3 class="archive-link"><a href="/blog/archives/">Blog Archives</a></h3>
+{% endblock %}

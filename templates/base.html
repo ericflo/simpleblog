@@ -8,8 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block description %}{% endblock %}">
 
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/atom.xml" rel="alternate" title="Eric Florenzano's Blog" type="application/atom+xml">
+
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/code.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -17,6 +21,7 @@
     <![endif]-->
 
     <!-- Fav and touch icons -->
+    {#
     <!--
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
@@ -24,13 +29,28 @@
     <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="/static/ico/favicon.png">
     -->
+    #}
   </head>
 
   <body>
     <div class="container">
-      {% block container %}{% endblock %}
+      <div class="center-column">
+        <h1 class="blog-header"><a href="/">Eric Florenzano&rsquo;s Blog</a></h1>
+        <ul class="blog-header-links">
+          <li>{% if home %}Home{% else %}<a href="/">Home</a>{% endif %}</li>
+          <li>{% if archives %}Archives{% else %}<a href="/blog/archives/">Archives</a>{% endif %}</li>
+          <li><a href="https://twitter.com/ericflo" class="twitter-follow-button" data-show-count="false">Follow @ericflo</a></li>
+          <li class="feed"><a href="/atom.xml"><img src="/static/img/feed-icon-28x28.png" width="20" height="20" alt="Subscribe to this blog" /></a></li>
+        </ul>
+        {% block container %}{% endblock %}
+      </div>
     </div>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    {#
+    <!--
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    -->
+    #}
   </body>
 </html>

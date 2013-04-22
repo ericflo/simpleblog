@@ -3,13 +3,30 @@
 {% block title %}{{ title }} - Eric Florenzano&rsquo;s Blog{% endblock %}
 
 {% block container %}
-  <h1>{{ title }}</h1>
-  <ul>
-    {% for post in posts %}
-      <li>
-        <span class="date">{{ post['metadata']['date'].strftime('%a %b %d, %Y') }}</span>
-        <a href="{{ metadata_to_url(post['metadata']) }}">{{ post['metadata'].title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+  <h2>{{ title }}</h2>
+  {% for year, year_posts in posts %}
+    <div class="yeargroup">
+      <h3>{{ year }}</h3>
+      {% for post in year_posts %}
+        <div class="yearitem">
+          <span class="date">{{ post['metadata']['date'].strftime('%b %d') }}</span>
+          <div class="itembody">
+            <a class="title" href="{{ metadata_to_url(post['metadata']) }}">{{ post['metadata'].title }}</a>
+            {% if post['metadata'].get('categories') -%}
+              <div class="categories">
+                Posted in:
+                <ul>
+                  {% for category in post['metadata']['categories'] %}
+                    <li><a href="/blog/categories/{{ slugify(category) }}/">{{ category }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      {% endfor %}
+      <div class="clearfix"></div>
+    </div>
+  {% endfor %}
 {% endblock %}

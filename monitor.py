@@ -103,7 +103,7 @@ def track(path):
         _files.append(path)
 
 
-def track_paths(paths):
+def track_paths(paths, filter_func=None):
     while paths:
         for root, dirs, files in os.walk(paths.pop()):
             for d in dirs:
@@ -115,7 +115,10 @@ def track_paths(paths):
             for fn in files:
                 if fn.startswith('.'):
                     continue
-                track(os.path.join(root, fn))
+                full_path = os.path.join(root, fn)
+                if filter_func and not filter_func(full_path):
+                    continue
+                track(full_path)
 
 
 def start(interval=1.0):
