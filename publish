@@ -8,8 +8,8 @@ cd /tmp
 mkdir blogwork
 cd blogwork
 
-git clone git@github.com:ericflo/ericflo.github.com.git
-cd ericflo.github.com
+git clone git@github.com:ericflo/ericflo.github.io.git
+cd ericflo.github.io
 
 git checkout --orphan master
 git rm -rf .
