@@ -16,6 +16,7 @@ git rm -rf .
 
 cp -R $CURRENT/output/* .
 touch .nojekyll
+echo "eflorenzano.com" > CNAME
 
 git add .
 git commit -a -m "Generate blog site"
