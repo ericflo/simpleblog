@@ -1,0 +1,55 @@
+---
+layout: post
+title: "So fix it!"
+date: 2013-07-01T10:15:00-08:00
+comments: false
+categories: [Opinion, Programming, Maintenance]
+published: true
+---
+
+"Uhh, why is this single controller method 500 lines of code?" - Me, a few
+months into my first job after college.  I remember saying it out loud,
+expecting to hear a faint chuckle from my co-workers, as if it were a joke. "We
+should really break this up into smaller functions," I said, confident that I
+was right.
+
+What `my coworker`_ said in response surprised me in the best possible way, and
+what I learned then is something I still remind myself of to this day.  He
+said, "You're right, that's too long. So fix it!"  I responded with, "yeah, we
+really should."  To which he responded, "You are one of us, so fix it!"
+
+This became somewhat of a refrain.  Someone would complain about something and
+another person would shout back at them, "So fix it!"
+
+It's interesting how easy it is for us to associate with a group so strongly
+that it becomes part of our identity--part of who we are--yet in some
+situations it's easy to diffuse that responsibility and dismiss it as not being
+our own.
+
+But, of course, he was right--I was one of "we", and "we" should fix it,
+so I should fix it!  If you're running a small startup with just a few people,
+this mentality is easy to have.  There are so few people contributing that you
+don't have much choice in the matter.
+
+As a company grows, people start to specialize, to carve out their area, and to
+take some ownership.  This can be a good thing!  By allowing people to
+specialize, and hiring more people, we can build something bigger.  But
+everyone's still in it together, and the individual is still part of "we".  If
+you ever find yourself thinking "that's not my job," then it's a red flag that
+you've let things go too far.
+
+All this being said, you have to find a balance.  You can't fix every code
+smell you find, or you'd never get anything done.  In fact there may be code
+that you recognize as bad, but you just don't have the knowledge or resources
+to fix it.  That's just the name of the game, and that's fine, but you also
+can't fix nothing, or your tech debt will grow unbounded and that will end in
+disaster as well.
+
+Anyway, it's been almost a year since I made the jump from working at
+`a company of 2`_, to working at a company that's `much much larger`_, and this
+early lesson is one thing that I often find myself thinking and reminding
+myself of.
+
+.. _`my coworker`: https://twitter.com/donovanpreston
+.. _`a company of 2`: http://www.crunchbase.com/company/clutch-io
+.. _`much much larger`: https://twitter.com
