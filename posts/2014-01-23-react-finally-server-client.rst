@@ -90,13 +90,13 @@ JSX (A Javascript syntax extension)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 JSX lets you write components without pulling your hair out.  Instead of
-writing tedious code like this::
+writing tedious code like this:
 
 .. code-block:: js
 
     React.DOM.a({href: '/about'}, 'About this site')
 
-It allows you to just write this right alongside your javascript::
+It allows you to just write this right alongside your javascript:
 
 .. code-block:: html
 
@@ -104,7 +104,7 @@ It allows you to just write this right alongside your javascript::
 
 The transformer is smart enough to not need any special indicators about where
 the markup blocks are, but it also allows you to drop into Javascript, like
-so::
+so:
 
 .. code-block:: html
 
