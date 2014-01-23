@@ -110,8 +110,8 @@ so:
 
     <a href={this.props.aboutUrl}>About this site</a>
 
-You can choose to use this, but after getting over my initial distaste for it
-("Ack! Who got markup in my code!"), I could never go back to not using it.
+You can choose not to use this, but after getting over my initial distaste for
+it ("Ack! Who got markup in my code!"), I could never go back to not using it.
 
 Next
 ~~~~
