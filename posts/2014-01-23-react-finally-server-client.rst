@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "React: Finally, a great server/client web stack"
-date: 2013-01-23T10:15:00-08:00
+date: 2013-01-23T12:29:00-08:00
 comments: false
 categories: [React, ReactJS, Programming, Server, Client, Javascript]
-published: false
+published: true
 ---
 
 We started with static websites, simple pages that could link between each
@@ -41,7 +41,7 @@ share some of my glue code and lessons learned etc.
 `React.js`_
 ===========
 
-But first, a bit about React.  It was released by Facebook and was apparently a
+First, a bit about React.  It was released by Facebook and was apparently a
 collaboration between the Instagram and Facebook web engineers.  It looks
 similar in shape but not in size to Angular.js, but even though it looks
 similar, it has a very different philosophy underneath.  React has a few key
@@ -58,7 +58,7 @@ is a tree diffing algorithm that can look at the in-memory virtual DOM, and the
 real browser DOM, and build the optimal diff.  Then it applies that diff to the
 browser's DOM.
 
-The second option for output is more interesting to me though.  If you can
+The second option for output is equally interesting to me though.  If you can
 walk this virtual DOM tree and render to a string, then you can do that all
 on the server and then send it down to the client.  And since it's a tree,
 React simply stores a checksum in a data attribute on the root node, and if
@@ -72,13 +72,14 @@ React's component framework is how you construct that virtual DOM.  Each
 component has a ``render()`` function which returns a virtual DOM node with any
 number of children and event handlers attached.  So at its core, React
 components are widgets that can render themselves and react to user input.  At
-render time, components can access two instance objects: ``props``, and
+render time, components should only access two instance objects: ``props``, and
 ``state``.
 
-Props are passed-in and are immutable, and state is assigned
-entirely by the component itself.  Callback functions can be passed as props,
-and attached directly to the virtual DOM nodes in the ``render()`` function.
-In fact, that's the primary way that components communicate with each other.
+Props are passed-in and are immutable, whereas state is assigned and updated
+entirely by the component itself.  Callback functions can be passed from parent
+node to child node, as ``props``, and attached directly to the virtual DOM
+nodes in the ``render()`` function.  In fact, that's the primary way that
+components communicate with each other.
 
 These components have a lifecycle, and ways to hook into state and prop
 changes.  They also support mixins, which can hook into the component lifecycle
