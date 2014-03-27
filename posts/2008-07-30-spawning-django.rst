@@ -16,7 +16,7 @@ First, I installed spawning:
 
 .. code-block:: bash
 
-    sudo easy_install Spawning
+    pip install Spawning
 
 And away setuptools went and installed all of the prerequisites and the package itself.  (I have had problems with this in the past, but grabbing greenlet, eventlet, simplejson, PasteDeploy, and Spawning and installing them individually does the trick).
 
@@ -24,7 +24,7 @@ The next thing to do is go to the directory which holds your settings.py, or at 
 
 .. code-block:: bash
 
-    spawn --factory=spawning.django_factory.config_factory settings --port 9090 -s 4 -t 100
+    spawning --factory=spawning.django_factory.config_factory settings --port 9090 -s 4 -t 100
 
 This starts up a Spawning server with 4 processes and 100 threads.  I chose those numbers almost completely arbitrarily.  (Well, that's not entirely true, my Apache setup previously had 4 processes and 100 requests per child.  I know that requests per child doesn't map at all to threads, but that's where I got the number.)  The next thing to do is visit your site, but instead of visiting the normal port 80 or 8000, visit port 9090.  If you're running it on your own box, that should be http://127.0.0.1:9090/.
 
@@ -35,6 +35,13 @@ If you're viewing this on my website directly, then you've already used Spawning
 In all, it was an extremely easy upgrade.  I would recommend that everyone who has an interest in these types of things at least try it--especially if you're looking into other pure-python WSGI servers like CherryPy_.
 
 **UPDATE**: If you were having troubles reaching the site before, it's because I was having problems with my database due to another app on the same server, not due to anything that Spawning was doing wrong.
+
+**UPDATE 2**: A reader wrote in to say that the "spawn" command was changed to "spawning", pip is generally preferred over easy_install these days, and the following::
+
+    Also what worked for me was running:
+    spawning --processes=4 --threads=8
+    my_app/project_name.wsgi.application --port=9000
+    inside the project dir(ie the one that contains manage.py)
 
 .. _`Donovan Preston`: http://ulaluma.com/pyx/
 .. _eventlet: http://pypi.python.org/pypi/eventlet/0.7
