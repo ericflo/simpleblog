@@ -4,7 +4,7 @@ title: "React: Finally, a great server/client web stack"
 date: 2014-01-23T12:29:00-08:00
 comments: false
 categories: [React, ReactJS, Programming, Server, Client, Javascript]
-alias: [/blog/2013/01/23/react-finally-server-client]
+alias: [/blog/2014/01/23/react-finally-server-client]
 published: true
 ---
 
