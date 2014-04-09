@@ -1,27 +1,28 @@
 ---
 layout: post
-title: "Server/Client With React, Part 1: Project Structure"
+title: "Server/Client With React, Part 1: Getting Started"
 date: 2014-04-09T12:29:00-08:00
 comments: false
 categories: [React, ReactJS, Programming, Server, Client, Javascript]
-alias: [/blog/2014/04/09/react-part-1-project-structure]
-published: false
+alias: [/blog/2014/04/09/react-part-1-getting-started]
+published: true
 ---
 
 A few months ago `I wrote about`_ how React.js has made it possible (and
 relatively easy) to write code that renders markup quickly on the server, and
-also can be executed on the client to perform all page updates.  That all that
-could be done with a few open source libraries and some glue code. Today I'll
-start to walk through how I prefer to set this whole thing up and develop with
-React.js.
+also can be executed on the client to perform all page updates.  Now that we
+know what the goal is, we can explore how to put all these pieces together, or
+how I've managed to do it anyway.
 
 Let's Build Something!
 ----------------------
 
 It's easiest to talk about concepts if we can also work on something concrete,
 so in the next few posts we'll build a little example site called IRLMoji,
-which asks users to post pictures that look like emoji.  Here's what it'll look
-like:
+which asks users to post pictures that look like emoji.  All credit goes to
+`@dwiskus`_ for originally starting this `meme on Twitter`_.  But we're going
+to turn it into its own app for demo purposes, which will look something like
+this:
 
 .. image:: http://eflorenzano.com.s3-us-west-2.amazonaws.com/irlmoji-screenshot.jpg
     :alt: A screenshot of what we are building
@@ -29,9 +30,9 @@ like:
     :width: 200px
 
 It's definitely not pretty (sorry), but it's got all the stuff we need to learn
-including auth, content creation, server communication, integration with
-third-party JS libraries, etc.  If you'd like to follow along and see the code
-for the finished site, it's all up on GitHub:
+about React including auth, content creation, server communication, integration
+with third-party JS libraries, etc.  If you'd like to follow along and see the
+code for the finished site, it's all up on GitHub:
 `https://github.com/ericflo/irlmoji`_.
 
 
@@ -54,23 +55,22 @@ render it to the page:
 
 All we're doing here is calling ``React.renderComponent`` on the component that
 was passed in, rendering the component into that `#react-root` DOM element.
-We'll end up making this function do a bit more work, but for
+We'll end up making this function do a bit more work in a future post, but for
 now let's move on to writing some handlers, and hooking them up to URL routes.
 
-We're going to use a `really basic router`_ that I wrote for this purpose, and
-you're free to use it too.  In the past I've used `director`_ to handle URL
-routing, but there was a lot of code there that I don't want/need, and an
-infuriating bug where things would render twice ended up driving me to write a
-simple alternative.  Anyway, on to the routes.  Let's start with a new file at
-``frontend/javascript/routes.js``:
+In the past I've used `director`_ to handle URL routing, but eventually I wrote
+`a small router`_ which escews `hashbang-style`_ URLs in favor of HTML5
+pushState.  If needed, we can always fall back to full page reloads, rather
+than resort to hashbangs.  Now we've got this router to work with, let's put it
+to use, starting with a new file at ``frontend/javascript/routes.js``:
 
 .. code-block:: as
+
+    /** @jsx React.DOM */
 
     // Lodash is a fast/light underscore replacement that works better for me
     var _ = require('lodash/dist/lodash.underscore');
     var common = require('./components/common');
-    // We haven't built these common components yet.  It will be a set of
-    // React components that we commonly use throughout the site.
 
     // Renders the index page, for now just "Hello, World!"
     function handleIndex(app) {
@@ -141,28 +141,50 @@ Now that we have our app, and our routes, let's tie them together:
 
     // Import the routes we created earlier
     var routes = require('./routes');
-    // Just a simple router I wrote and you can use too
+    // ...and the simple router we're using
     var makeRouter = require('./router').makeRouter;
 
     app.router = makeRouter(routes.getRoutes(app), routes.getNotFound(app));
     app.router.start();
 
+To finish up this part, we still have to create that NotFound React component,
+so let's create a new file in ``frontend/javascript/components/common.js`` with
+this as its content:
+
+.. code-block:: as
+
+    /** @jsx React.DOM */
+
+    var React = require('react/addons');
+
+    var NotFound = React.createClass({
+      render: function() {
+        return <p>That page could not be found.</p>;
+      }
+    });
+
+    module.exports = {NotFound: NotFound};
+
 What's Next?
 ------------
 
-It would be great if you could fire up your browser now and see in action what
+It would be great if we could fire up our browsers now and see in action what
 we've built so far.  Unfortunately, however, we haven't built the server yet.
 Here are some of the high level things that we're going to cover next:
 
-* Write the ``server.js`` that mimics the ``client.js`` we've been building
 * Set up Gulp_ and Browserify_ to compile our node JavaScript into Browser JS
+* Write the ``server.js`` that mimics the ``client.js`` we've been building and
+  acts as http server.
 * Build the communications layer between the frontend and the API
 * Ensure that the client re-uses the same data the server used when it rendered
 * Oh yeah, write our app :)
 
 .. _`I wrote about`: http://eflorenzano.com/blog/2014/01/23/react-finally-server-client
+.. _`@dwiskus`: https://twitter.com/dwiskus
+.. _`meme on Twitter`: http://betterelevation.com/irlmoji/
 .. _`https://github.com/ericflo/irlmoji`: https://github.com/ericflo/irlmoji
-.. _`really basic router`: https://github.com/ericflo/irlmoji/blob/master/frontend/javascript/router.js
+.. _`a small router`: https://github.com/ericflo/irlmoji/blob/master/frontend/javascript/router.js
+.. _`hashbang-style`: http://www.webmonkey.com/2011/02/gawker-learns-the-hard-way-why-hash-bang-urls-are-evil/
 .. _`director`: https://github.com/flatiron/director
 .. _Gulp: http://gulpjs.com/
 .. _Browserify: http://browserify.org/
