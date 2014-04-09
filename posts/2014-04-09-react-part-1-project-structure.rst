@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Server/Client With React, Part 1: Getting Started"
-date: 2014-04-09T12:29:00-08:00
+date: 2014-04-09T13:00:00-08:00
 comments: false
 categories: [React, ReactJS, Programming, Server, Client, Javascript]
 alias: [/blog/2014/04/09/react-part-1-getting-started]
