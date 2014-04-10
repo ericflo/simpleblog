@@ -4,7 +4,6 @@ title: "Server/Client With React, Part 4: API Communication"
 date: 2014-04-12T12:29:00-08:00
 comments: false
 categories: [React, ReactJS, Programming, Server, Client, Javascript]
-alias: [/blog/2014/04/12/react-part-4-api-communication]
 published: false
 ---
 
