@@ -16,8 +16,8 @@ middleware we'll use to build our http server.
 
     npm install --save connect
 
-Why not some other thing like Koa_, hapi_, or mach_?  Literally no reason.  Our
-needs are simple and any one of those would work great.  I chose Connect_
+Why not some other thing like Koa_, hapi_, or mach_?  No real reason.  Our
+needs are simple and any one of those would work well.  I chose Connect_
 because it's popular, it'd been around a while, and it seemed to work well
 enough.
 
@@ -41,8 +41,8 @@ starting with the basics, and we'll fill in more as we go:
 Running this file will start up a server listening on port 5000, serving any
 static files that are found in /build, which knows how to parse querystrings,
 form submissions, and json, and is protected against CSRF attacks.  So far, so
-easy.  Now let's add cookie sessions, which for some reason requires a bit of a
-hack:
+easy.  Now let's add cookie sessions, where I've found that ``maxAge`` needs to
+be set per-request in Connect_ for some reason:
 
 .. code-block:: js
 
@@ -71,8 +71,8 @@ hack:
       .use(connect.json())
       .listen(5000);
 
-Now we're up and running with a cookie-based session system, which we're not
-using.  In fact, we're not using any of this yet, because we're not rendering
+Now we're up and running with a cookie-based session system, but we're not yet
+using it.  In fact, we're not using any of this yet, because we're not rendering
 or serving the main site yet.  We can write that now:
 
 .. code-block:: js
@@ -127,7 +127,7 @@ simple router we used before, and tell the router to route and render its
 contents by calling the ``go`` function with the current path as a parameter.
 
 How do we actually render it though?  We left that function blank.  Before we
-work on that though, we need some sort of HTML template to work from.   Let's
+work on that, we need some sort of HTML template to work from.   Let's
 build our basic HTML page template in ``frontend/page.html``:
 
 .. code-block:: html+django
@@ -155,7 +155,7 @@ build our basic HTML page template in ``frontend/page.html``:
     </body>
     </html>
 
-This "template" has no fancy logic or anything, it's just a frame, so we can
+This "template" has no real logic (it's just a frame) so we can
 use basic variable substitution -- in this case, in the style of Django
 templates.  So that's what our render function will have to do: determine what
 should be inserted for e.g. ``BODY_CONTENT`` and ``PAGE_TITLE``, render the
@@ -201,7 +201,7 @@ at it:
         }));
     }
 
-We honestly could have used any templating language, but as you can see, most
+We could have used any templating language, but as you can see, most
 of what's going on happens inside of ``react-root``, so this is all we'll need.
 
 Hey, we're live!  If we start up our server by running::
