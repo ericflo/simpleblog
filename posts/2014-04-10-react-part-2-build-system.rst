@@ -13,7 +13,7 @@ be run on the client, how will that work?  Browserify_ can take a look at our
 ``client.js``, walk the dependencies, and spit out something that browsers can
 actually execute.  Let's set that up!
 
-But first a bit about we'll structure the app.  This is how things look
+But first a bit about how we'll structure the app.  This is how things look
 currently::
 
     frontend/
