@@ -3,7 +3,7 @@
     <title><![CDATA[Eric Florenzano's Blog]]></title>
     <link href="http://eflorenzano.com/atom.xml" rel="self"/>
     <link href="http://eflorenzano.com/"/>
-    <updated>{{ now.isoformat() }}</updated>
+    <updated>{{ now.strftime("%Y-%m-%d %H:%M:%S") }}</updated>
     <id>http://eflorenzano.com/</id>
     <author>
         <name><![CDATA[Eric Florenzano]]></name>
@@ -13,7 +13,7 @@
     <entry>
         <title type="html"><![CDATA[{{ post['metadata']['title'] }}]]></title>
         <link href="http://eflorenzano.com{{ post['metadata']['url'] }}"/>
-        <updated>{{ post['metadata']['date'].isoformat() }}</updated>
+        <updated>{{ post['metadata']['date'].strftime("%Y-%m-%d %H:%M:%S") }}</updated>
         <id>http://eflorenzano.com{{ post['metadata']['url'] }}</id>
         <content type="html"><![CDATA[{{ post['rendered']|safe }}]]></content>
     </entry>
